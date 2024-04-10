@@ -1,22 +1,45 @@
 import {useEffect, useState} from "react";
+import {Button} from "../components/Button.jsx";
+import styled from "styled-components";
+
+const StyledDiv = styled.div`
+    width: 96%;
+    padding: 2%;
+    margin: auto;
+`
+
+const StyledHeader = styled.h1`
+    font-size: calc(2vw + 3vmin);
+    margin: auto;
+    text-align: center;
+    width: 100%;
+`
+
+const StyledList = styled.ul`
+    list-style-type: none;
+    padding: 0;
+`
+
+const StyledButton = styled(Button)`
+    width: 98%;
+`
 
 export default function HomePage(){
     const [artists, setArtists] = useState([]);
 
     useEffect(() => {
+        const fetchArtists = async () => {
+            try {
+                const response = await fetch('https://api.artic.edu/api/v1/artworks');
+                const data = await response.json();
+                const artistNames = extractArtistNames(data);
+                setArtists(artistNames);
+            } catch (error) {
+                console.error('Error fetching artists:', error);
+            }
+        };
         fetchArtists();
     }, []);
-
-    const fetchArtists = async () => {
-        try {
-            const response = await fetch('https://api.artic.edu/api/v1/artworks');
-            const data = await response.json();
-            const artistNames = extractArtistNames(data);
-            setArtists(artistNames);
-        } catch (error) {
-            console.error('Error fetching artists:', error);
-        }
-    };
 
     const extractArtistNames = (data) => {
         const artistNames = data.data.map((artwork) => artwork.artist_title);
@@ -25,13 +48,13 @@ export default function HomePage(){
     };
 
     return (
-        <div>
-            <h1>Artists</h1>
-            <ul>
+        <StyledDiv>
+            <StyledHeader>Artists</StyledHeader>
+            <StyledList>
                 {artists.map((artist, index) => (
-                    <li key={index}>{artist}</li>
+                    <li><StyledButton key={index}>{artist}</StyledButton></li>
                 ))}
-            </ul>
-        </div>
+            </StyledList>
+        </StyledDiv>
     );
 }
