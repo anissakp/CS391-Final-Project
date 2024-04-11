@@ -29,11 +29,20 @@ export default function ArtistPage({ id }) {
     return (
         <>
             <h1>About {artist.title}</h1>
-            <h3>Birth date: {artist.birth_date}</h3>
-            <h3>Death date: {artist.death_date}</h3>
-            <p>{artist.description}</p>
+            {artist.birth_date ? (
+                <h3>Birth date: {artist.birth_date}</h3>
+            ) : (
+                <h3>Birth date: {artist.title} birth date is unknown</h3>
+            )}
+            {artist.death_date ? (
+                <h3>Death date: {artist.death_date}</h3>
+            ) : (
+                <h3>Death date: {artist.title} is still alive or death date is unknown</h3>
+            )}
+            {artist.description && <p>{artist.description}</p>}
         </>
     );
+
 }
 
 ArtistPage.propTypes = {
