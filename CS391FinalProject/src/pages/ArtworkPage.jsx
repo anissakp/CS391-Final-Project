@@ -38,5 +38,5 @@ export default function ArtworkPage({ id }){
 
 }
 ArtworkPage.propTypes = {
-    id: PropTypes.string.isRequired, //ask if itll be a number or string
+    id: PropTypes.string.isRequired, //ask if it'll be a number or string
 };
