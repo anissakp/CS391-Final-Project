@@ -27,11 +27,18 @@ export default function ArtworkPage({ id }){
     return (
         <>
             <h1>Artwork Page</h1>
-            <div>
-                    <h2>{artwork.title}</h2>
-                    <h3>{artwork.artist_title}</h3>
-                </div>
 
+            <div className="artwork-info">
+                <p>Artist:{artwork.artist_display}</p>
+                <p>Date: {artwork.date_display}</p>
+                <p>Dimensions:{artwork.dimensions}</p>
+                <p>Medium: {artwork.medium_display}</p>
+                <img
+                    src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/300,/0/default.jpg`}
+                    alt={artwork.title}
+                />
+
+            </div>
         </>
     )
     //artist name, photo, title, description?
