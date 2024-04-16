@@ -34,6 +34,7 @@ export default function ArtworkPage({ id }){
 
         </>
     )
+    //artist name, photo, title, description?
 
 }
 ArtworkPage.propTypes = {
