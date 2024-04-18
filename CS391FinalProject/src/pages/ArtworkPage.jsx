@@ -1,3 +1,4 @@
+
 import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 
@@ -47,3 +48,7 @@ export default function ArtworkPage({ id }){
 ArtworkPage.propTypes = {
     id: PropTypes.string.isRequired, //ask if it'll be a number or string
 };
+
+// Ana: send "artist_id" to ArtistPage
+// API: https://api.artic.edu/api/v1/artworks/{id}
+

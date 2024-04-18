@@ -1,11 +1,32 @@
+
 import './App.css'
 import ArtworkPage from "./pages/ArtworkPage.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import { createGlobalStyle } from 'styled-components';
 
-function App() {
+const GlobalStyle = createGlobalStyle`
+    * {
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: fangsong, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        background-color: white;
+    }
+`;
 
+export default function App() {
   return (
     <ArtworkPage id={'129884'}/> // esting artwork page with random art
+
+      <>
+        <GlobalStyle/>
+        <HomePage/>
+      </>
   )
 }
 
-export default App
