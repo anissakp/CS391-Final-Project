@@ -1,32 +1,12 @@
-
-import './App.css'
-import ArtworkPage from "./pages/ArtworkPage.jsx";
-import HomePage from "./pages/HomePage.jsx";
-import { createGlobalStyle } from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-    * {
-        margin: 0;
-        box-sizing: border-box;
-    }
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: fangsong, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        background-color: white;
-    }
-`;
+//import ArtworkPage from "./pages/ArtworkPage.jsx";
+//import HomePage from "./pages/HomePage.jsx";
+import ArtistPage from "./pages/ArtistPage.jsx";
 
 export default function App() {
   return (
-    <ArtworkPage id={'129884'}/> // esting artwork page with random art
-
-      <>
-        <GlobalStyle/>
-        <HomePage/>
-      </>
+      //<HomePage/>
+      //<ArtworkPage id={'129884'}/> // testing artwork page with random art
+      <ArtistPage id={'40810'}/> //testing artist page with random artist
   )
 }
 
