@@ -1,3 +1,6 @@
+
+import './App.css'
+import ArtworkPage from "./pages/ArtworkPage.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import { createGlobalStyle } from 'styled-components';
 
@@ -18,6 +21,8 @@ const GlobalStyle = createGlobalStyle`
 
 export default function App() {
   return (
+    <ArtworkPage id={'129884'}/> // esting artwork page with random art
+
       <>
         <GlobalStyle/>
         <HomePage/>
