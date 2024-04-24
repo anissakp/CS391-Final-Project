@@ -2,10 +2,11 @@
 // API: https://api.artic.edu/api/v1/artworks/{id}
 import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
+import { useParams } from 'react-router-dom';
 
-
-export default function ArtworkPage({ id }){
-    const [artwork,setArtwork]=useState([])
+export default function ArtworkPage({ }){
+    const [artwork, setArtwork]=useState([])
+    const { id } = useParams(); // extracts 'id' from the URL
     
     useEffect(()=>{
         async function fetchData() {

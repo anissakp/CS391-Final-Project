@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBrowserRouter, Routes, Route, RouterProvider} from 'react-router-dom';
-// import HomePage from "./pages/HomePage.jsx";
+import HomePage from "./pages/HomePage.jsx";
 import ArtistPage from "./pages/ArtistPage.jsx";
 import ArtworkPage from "./pages/ArtworkPage.jsx";
 import Header from "./components/Header.jsx"
@@ -10,18 +10,18 @@ function Root(){
     <>
       <Header/>
       <Routes>
-          {/* <Route
+          <Route
             path='/'
             element={<HomePage/>}
-          /> */}
+          />
           <Route
             path='/artist/:id'
             element={<ArtistPage/>}
           />
-          {/* <Route
-            path='./artwork'
+          <Route
+            path='/artwork/:id'
             element={<ArtworkPage/>}
-          /> */}
+          />
       </Routes>
     </>
   );
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     children: [
       // { path: "/", element: <HomePage /> },
       { path: "artist/:id", element: <ArtistPage /> },
-      // { path: "artwork", element: <ArtworkPage /> }
+      { path: "artwork/:id", element: <ArtworkPage /> }
     ]
   }
 ]);
