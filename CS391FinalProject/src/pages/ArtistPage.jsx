@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const StyledDiv=styled.div`
     margin: auto;
-    justify-content: center;
+    text-align: center;
 `
 
 export default function ArtistPage() {
@@ -34,10 +34,10 @@ export default function ArtistPage() {
         fetchData();
     },[id]);
     return (
-        <>
+        <StyledDiv>
             <h1>{artist.title}</h1>
 
-            <StyledDiv className="artist-info">
+            <div className="artist-info">
                 <h3>Birth date:</h3>
                 {artist.birth_date ? (
                     <p>{artist.birth_date}</p>
@@ -51,11 +51,15 @@ export default function ArtistPage() {
                     <p>{artist.title} is still alive or death date is unknown</p>
                 )}
                 <h3>About:</h3>
-                {artist.description && (
+                {artist.description ? (
                     <div dangerouslySetInnerHTML={{ __html: artist.description }} />
+                ) : (
+                    <>
+                        <p>There is no more information available about {artist.title}.</p>
+                    </>
                 )}
-            </StyledDiv>
-        </>
+            </div>
+        </StyledDiv>
     );
 }
 
