@@ -36,24 +36,28 @@ export default function ArtistPage() {
     return (
         <StyledDiv>
             <h1>{artist.title}</h1>
-
             <div className="artist-info">
                 <h3>Birth date:</h3>
                 {artist.birth_date ? (
                     <p>{artist.birth_date}</p>
                 ) : (
+                    // Since some artist birthdays are null
                     <p>{artist.title} birth date is unknown</p>
                 )}
                 <h3>Death date: </h3>
                 {artist.death_date ? (
                     <p>{artist.death_date}</p>
                 ) : (
+                    // Since some artist death dates are null
                     <p>{artist.title} is still alive or death date is unknown</p>
                 )}
                 <h3>About:</h3>
                 {artist.description ? (
                     <div dangerouslySetInnerHTML={{ __html: artist.description }} />
+                    // Had to use this function because it is taking the description in as a string when it is HTML formatted
+                    // dangerouslySetInnerHTML={{ __html: artist.description }} uses the HTML to format it correctly
                 ) : (
+                    // Since some artist descriptions are null
                     <>
                         <p>There is no more information available about {artist.title}.</p>
                     </>
