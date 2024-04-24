@@ -1,8 +1,13 @@
 // Margo
-// API: https://api.artic.edu/api/v1/artists/{id}
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { useParams } from 'react-router-dom';
+import styled from "styled-components";
+
+const StyledDiv=styled.div`
+    margin: auto;
+    justify-content: center;
+`
 
 export default function ArtistPage() {
     
@@ -32,7 +37,7 @@ export default function ArtistPage() {
         <>
             <h1>{artist.title}</h1>
 
-            <div className="artist-info">
+            <StyledDiv className="artist-info">
                 <h3>Birth date:</h3>
                 {artist.birth_date ? (
                     <p>{artist.birth_date}</p>
@@ -49,7 +54,7 @@ export default function ArtistPage() {
                 {artist.description && (
                     <div dangerouslySetInnerHTML={{ __html: artist.description }} />
                 )}
-            </div>
+            </StyledDiv>
         </>
     );
 }
