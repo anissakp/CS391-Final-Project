@@ -86,6 +86,7 @@ const StyledLinkWithIcon = styled(StyledLink)`
 export default function Header(props){
     const [artists, setArtists] = useState([]);
 
+    // Fetch artist data from API
     useEffect(() => {
         async function fetchArtists() {
             try {
@@ -118,6 +119,8 @@ export default function Header(props){
                         </StyledLink>
                     </li> */}
 
+                    {/* Create dropdown menu with each artist as an option */}
+                    {/* When an artist is selected, the user is navigated to that Artist's page */}
                     <DropdownLi>
                         <StyledLinkWithIcon to="#" className="App-link">
                             Artists <FontAwesomeIcon icon={faCaretDown} />
