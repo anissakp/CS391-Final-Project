@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {ArtworkDiv} from "../components/ArtworkDiv.jsx";
 
 const ArtworksContainer = styled.div`
     display: flex;
@@ -55,7 +56,9 @@ export default function HomePage() {
                 <div>
                     <ArtworksContainer>
                         {artworks.map(artwork => (
-                            <Artwork key={artwork.id} artwork={artwork} />
+                            <ArtworkDiv key={artwork.id}>
+                                <Artwork artwork={artwork} />
+                            </ArtworkDiv>
                         ))}
                     </ArtworksContainer>
                 </div>
