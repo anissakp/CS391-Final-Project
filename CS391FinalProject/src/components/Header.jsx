@@ -1,5 +1,4 @@
-// Anissa: send "id" to Artist Page
-// API: https://api.artic.edu/api/v1/artists
+// Anissa: Header.jsx
 import {useState, useEffect} from "react";
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
@@ -108,16 +107,11 @@ export default function Header(props){
             <StyledH1> The Art Institute of Chicago </StyledH1>
             <Nav>
                 <ul>
-                    {/* <li>
-                        <StyledLink to="/" className="App-link">
+                    <li>
+                        <StyledLinkWithIcon to="/" className="App-link">
                             Home
-                        </StyledLink>
-                    </li> */}
-                    {/* <li>
-                        <StyledLink to="/artist" className="App-link">
-                            Artists
-                        </StyledLink>
-                    </li> */}
+                        </StyledLinkWithIcon>
+                    </li>
 
                     {/* Create dropdown menu with each artist as an option */}
                     {/* When an artist is selected, the user is navigated to that Artist's page */}
@@ -133,12 +127,6 @@ export default function Header(props){
                             ))}
                         </DropdownContent>
                     </DropdownLi>
-
-                    {/* <li>
-                        <StyledLink to="/artwork" className="App-link">
-                            Artworks
-                        </StyledLink>
-                    </li> */}
                 </ul>
             </Nav>
         </HeaderWrapper>
