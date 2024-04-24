@@ -26,6 +26,11 @@ const Nav = styled.nav`
         padding: 0;
         margin: 0;
     }
+
+    li {
+        position: relative; 
+        margin-right: 10px;
+    }
 `;
 
 const StyledLink = styled(NavLink)`
@@ -39,9 +44,36 @@ const StyledLink = styled(NavLink)`
 
 
 const LogoImage = styled.img`
-    height: 50px;  // Adjust the height to control the size
-    width: auto;  // Maintain aspect ratio
-    margin-right: 20px;  // Add some space between the logo and the title
+    height: 50px; 
+    width: auto; 
+    margin-right: 20px;  
+`;
+
+
+
+const DropdownContent = styled.div`
+    display: none; // Initially hide the dropdown content
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
+`;
+
+const DropdownLi = styled.li`
+    &:hover ${DropdownContent} {
+        display: block;
+    }
 `;
 
 export default function Header(props){
@@ -81,13 +113,16 @@ export default function Header(props){
                         </StyledLink>
                     </li> */}
 
-                        {artists.map(artist => (
-                        <li key={artist.id}>
-                            <StyledLink to={`/artist/${artist.id}`}>
-                                {artist.title || "Artist Name"}
-                            </StyledLink>
-                        </li>
-                    ))}
+                    <DropdownLi>
+                        <NavLink to="#" className="App-link">Artists</NavLink>
+                        <DropdownContent>
+                            {artists.map(artist => (
+                                <NavLink key={artist.id} to={`/artist/${artist.id}`}>
+                                    {artist.title || "Unknown Artist"}
+                                </NavLink>
+                            ))}
+                        </DropdownContent>
+                    </DropdownLi>
 
                     <li>
                         <StyledLink to="/artwork" className="App-link">
