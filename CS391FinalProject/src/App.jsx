@@ -45,14 +45,3 @@ export default function App(){
       <RouterProvider router={router} />
   );
 }
-
-// export default function App() {
-//   return (
-
-//       //<HomePage/>
-//       //<ArtworkPage id={'129884'}/> // testing artwork page with random art
-//       <ArtistPage id={'40810'}/> //testing artist page with random artist
-
-//   )
-// }
-
