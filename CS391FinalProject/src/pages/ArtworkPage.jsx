@@ -49,7 +49,6 @@ export default function ArtworkPage(){
         </>
     )
     //artist name, photo, title, description?
-
 }
 ArtworkPage.propTypes = {
     id: PropTypes.string.isRequired, //ask if it'll be a number or string

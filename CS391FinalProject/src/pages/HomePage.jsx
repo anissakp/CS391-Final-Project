@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {ArtworkDiv} from "../components/ArtworkDiv.jsx";
+import PropTypes from "prop-types";
+
 
 const ArtworksContainer = styled.div`
     display: flex;
@@ -66,3 +68,6 @@ export default function HomePage() {
         </div>
     );
 }
+HomePage.propTypes = {
+    id: PropTypes.string.isRequired,
+};
