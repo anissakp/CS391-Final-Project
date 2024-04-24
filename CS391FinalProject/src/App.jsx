@@ -18,10 +18,10 @@ function Root(){
             path='/artist'
             element={<ArtistPage/>}
           />
-          <Route
+          {/* <Route
             path='./artwork'
             element={<ArtworkPage/>}
-          />
+          /> */}
       </Routes>
     </>
   );
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     children: [
       // { path: "/", element: <HomePage /> },
       { path: "artist", element: <ArtistPage /> },
-      { path: "artwork", element: <ArtworkPage /> }
+      // { path: "artwork", element: <ArtworkPage /> }
     ]
   }
 ]);

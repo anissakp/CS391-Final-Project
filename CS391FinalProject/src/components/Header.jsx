@@ -5,14 +5,17 @@ import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+
 const HeaderWrapper = styled.header`
     background-color: #333;
     color: white;
     padding: 20px;
-    min-height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: center; 
+    min-height: 80px; 
 `;
 
 const StyledH1 = styled.h1`
@@ -29,7 +32,7 @@ const Nav = styled.nav`
 
     li {
         position: relative; 
-        margin-right: 10px;
+        margin-left: 25px;
     }
 `;
 
@@ -42,7 +45,6 @@ const StyledLink = styled(NavLink)`
     }
 `;
 
-
 const LogoImage = styled.img`
     height: 50px; 
     width: auto; 
@@ -50,10 +52,10 @@ const LogoImage = styled.img`
 `;
 
 
-
 const DropdownContent = styled.div`
-    display: none; // Initially hide the dropdown content
+    display: none;
     position: absolute;
+    right: 0;  // Align the right edge of the dropdown with the right edge of its container
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -64,16 +66,23 @@ const DropdownContent = styled.div`
         padding: 12px 16px;
         text-decoration: none;
         display: block;
+
         &:hover {
             background-color: #f1f1f1;
         }
     }
 `;
 
+
 const DropdownLi = styled.li`
     &:hover ${DropdownContent} {
         display: block;
     }
+`;
+
+const StyledLinkWithIcon = styled(StyledLink)`
+  display: flex;
+  align-items: center;
 `;
 
 export default function Header(props){
@@ -114,7 +123,9 @@ export default function Header(props){
                     </li> */}
 
                     <DropdownLi>
-                        <NavLink to="#" className="App-link">Artists</NavLink>
+                        <StyledLinkWithIcon to="#" className="App-link">
+                            Artists <FontAwesomeIcon icon={faCaretDown} />
+                        </StyledLinkWithIcon>
                         <DropdownContent>
                             {artists.map(artist => (
                                 <NavLink key={artist.id} to={`/artist/${artist.id}`}>
@@ -124,11 +135,11 @@ export default function Header(props){
                         </DropdownContent>
                     </DropdownLi>
 
-                    <li>
+                    {/* <li>
                         <StyledLink to="/artwork" className="App-link">
                             Artworks
                         </StyledLink>
-                    </li>
+                    </li> */}
                 </ul>
             </Nav>
         </HeaderWrapper>
