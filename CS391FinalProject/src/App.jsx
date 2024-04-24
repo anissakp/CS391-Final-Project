@@ -15,7 +15,7 @@ function Root(){
             element={<HomePage/>}
           /> */}
           <Route
-            path='/artist'
+            path='/artist/:id'
             element={<ArtistPage/>}
           />
           {/* <Route
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <Root />,
     children: [
       // { path: "/", element: <HomePage /> },
-      { path: "artist", element: <ArtistPage /> },
+      { path: "artist/:id", element: <ArtistPage /> },
       // { path: "artwork", element: <ArtworkPage /> }
     ]
   }

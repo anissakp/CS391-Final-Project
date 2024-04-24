@@ -2,11 +2,14 @@
 // API: https://api.artic.edu/api/v1/artists/{id}
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useParams } from 'react-router-dom';
 
-export default function ArtistPage({ id }) {
+
+export default function ArtistPage({ }) {
     
     const [artist,setArtist]=useState([])
-    
+    const { id } = useParams(); // extracts 'id' from the URL
+
     useEffect(()=>{
         async function fetchData() {
             try {

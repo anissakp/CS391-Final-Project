@@ -51,7 +51,6 @@ const LogoImage = styled.img`
     margin-right: 20px;  
 `;
 
-
 const DropdownContent = styled.div`
     display: none;
     position: absolute;
@@ -73,7 +72,6 @@ const DropdownContent = styled.div`
     }
 `;
 
-
 const DropdownLi = styled.li`
     &:hover ${DropdownContent} {
         display: block;
@@ -86,7 +84,6 @@ const StyledLinkWithIcon = styled(StyledLink)`
 `;
 
 export default function Header(props){
-
     const [artists, setArtists] = useState([]);
 
     useEffect(() => {
@@ -95,7 +92,7 @@ export default function Header(props){
                 const response = await fetch('https://api.artic.edu/api/v1/artists');
                 const data = await response.json();
                 if (data && data.data) {
-                    setArtists(data.data); // Assuming 'data' contains the list of artists
+                    setArtists(data.data); 
                 }
             } catch (error) {
                 console.error('Failed to fetch artists:', error);
@@ -103,7 +100,6 @@ export default function Header(props){
         }
         fetchArtists();
     }, []);
-
 
     return (
         <HeaderWrapper>
