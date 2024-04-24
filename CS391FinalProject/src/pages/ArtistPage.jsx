@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 export default function ArtistPage({ id }) {
     
     const [artist,setArtist]=useState([])
+    
     useEffect(()=>{
         async function fetchData() {
             try {

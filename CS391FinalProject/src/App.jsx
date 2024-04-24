@@ -15,11 +15,11 @@ function Root(){
             element={<HomePage/>}
           /> */}
           <Route
-            path='/artist/:id'
+            path='/artist'
             element={<ArtistPage/>}
           />
           <Route
-            path='./artwork/:id'
+            path='./artwork'
             element={<ArtworkPage/>}
           />
       </Routes>

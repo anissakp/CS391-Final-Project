@@ -1,6 +1,6 @@
 // Anissa: send "id" to Artist Page
 // API: https://api.artic.edu/api/v1/artists
-
+import {useState, useEffect} from "react";
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
@@ -37,6 +37,7 @@ const StyledLink = styled(NavLink)`
     }
 `;
 
+
 const LogoImage = styled.img`
     height: 50px;  // Adjust the height to control the size
     width: auto;  // Maintain aspect ratio
@@ -44,10 +45,29 @@ const LogoImage = styled.img`
 `;
 
 export default function Header(props){
+
+    const [artists, setArtists] = useState([]);
+
+    useEffect(() => {
+        async function fetchArtists() {
+            try {
+                const response = await fetch('https://api.artic.edu/api/v1/artists');
+                const data = await response.json();
+                if (data && data.data) {
+                    setArtists(data.data); // Assuming 'data' contains the list of artists
+                }
+            } catch (error) {
+                console.error('Failed to fetch artists:', error);
+            }
+        }
+        fetchArtists();
+    }, []);
+
+
     return (
         <HeaderWrapper>
             <LogoImage src={logo} className='App-logo' alt='logo' />
-            <StyledH1> The Chicago Art Museum </StyledH1>
+            <StyledH1> The Art Institute of Chicago </StyledH1>
             <Nav>
                 <ul>
                     {/* <li>
@@ -55,11 +75,20 @@ export default function Header(props){
                             Home
                         </StyledLink>
                     </li> */}
-                    <li>
+                    {/* <li>
                         <StyledLink to="/artist" className="App-link">
                             Artists
                         </StyledLink>
-                    </li>
+                    </li> */}
+
+                        {artists.map(artist => (
+                        <li key={artist.id}>
+                            <StyledLink to={`/artist/${artist.id}`}>
+                                {artist.title || "Artist Name"}
+                            </StyledLink>
+                        </li>
+                    ))}
+
                     <li>
                         <StyledLink to="/artwork" className="App-link">
                             Artworks
