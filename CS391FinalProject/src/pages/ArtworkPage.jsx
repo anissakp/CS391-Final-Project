@@ -4,7 +4,7 @@ import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 import { useParams } from 'react-router-dom';
 
-export default function ArtworkPage({ }){
+export default function ArtworkPage(){
     const [artwork, setArtwork]=useState([])
     const { id } = useParams(); // extracts 'id' from the URL
     
@@ -34,7 +34,9 @@ export default function ArtworkPage({ }){
             <h1>Artwork Page</h1>
 
             <div className="artwork-info">
-                <p>Artist:{artwork.artist_display}</p>
+                <p>Artist:
+                    <a href={`/artist/${artwork.artist_id}`}>{artwork.artist_display}</a>
+                </p>
                 <p>Date: {artwork.date_display}</p>
                 <p>Dimensions:{artwork.dimensions}</p>
                 <p>Medium: {artwork.medium_display}</p>
