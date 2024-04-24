@@ -3,8 +3,10 @@
 import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 
+
 export default function ArtworkPage({ id }){
     const [artwork,setArtwork]=useState([])
+    
     useEffect(()=>{
         async function fetchData() {
             try {
