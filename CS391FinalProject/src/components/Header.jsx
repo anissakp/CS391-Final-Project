@@ -54,7 +54,7 @@ const LogoImage = styled.img`
 const DropdownContent = styled.div`
     display: none;
     position: absolute;
-    right: 0;  // Align the right edge of the dropdown with the right edge of its container
+    right: 0; 
     background-color: #f9f9f9;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
