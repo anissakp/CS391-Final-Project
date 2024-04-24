@@ -3,6 +3,7 @@
 
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
+import logo from '../assets/logo.png';
 
 const HeaderWrapper = styled.header`
     background-color: #333;
@@ -36,10 +37,16 @@ const StyledLink = styled(NavLink)`
     }
 `;
 
+const LogoImage = styled.img`
+    height: 50px;  // Adjust the height to control the size
+    width: auto;  // Maintain aspect ratio
+    margin-right: 20px;  // Add some space between the logo and the title
+`;
+
 export default function Header(props){
     return (
         <HeaderWrapper>
-            <img src={props.logo} className='App-logo' alt='logo' />
+            <LogoImage src={logo} className='App-logo' alt='logo' />
             <StyledH1> The Chicago Art Museum </StyledH1>
             <Nav>
                 <ul>
@@ -49,7 +56,7 @@ export default function Header(props){
                         </StyledLink>
                     </li> */}
                     <li>
-                        <StyledLink to="/artist/${artist.id}" className="App-link">
+                        <StyledLink to="/artist" className="App-link">
                             Artists
                         </StyledLink>
                     </li>

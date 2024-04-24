@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 
 export default function ArtistPage({ id }) {
-    const { id } = useParams(); // Retrieve the 'id' parameter from the URL
+    
     const [artist,setArtist]=useState([])
     useEffect(()=>{
         async function fetchData() {

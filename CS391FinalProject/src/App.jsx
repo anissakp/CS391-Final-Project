@@ -19,7 +19,7 @@ function Root(){
             element={<ArtistPage/>}
           />
           <Route
-            path='./artwork'
+            path='./artwork/:id'
             element={<ArtworkPage/>}
           />
       </Routes>
