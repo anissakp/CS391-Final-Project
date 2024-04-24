@@ -8,6 +8,7 @@ const ArtworksContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 56px;
+    justify-content: center;
 `;
 
 function Artwork({ artwork }) {
@@ -47,7 +48,7 @@ export default function HomePage() {
 
     return (
         <div>
-            <h2>Chicago Art Museum Home Page</h2>
+            <h2> </h2>
             {loading ? (
                 <div>Art is loading...</div>
             ) : (
