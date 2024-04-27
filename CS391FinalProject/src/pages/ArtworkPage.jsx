@@ -3,11 +3,45 @@
 import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 import { useParams } from 'react-router-dom';
+import styled from "styled-components";
+import SimplePopup from "./SimplePopup.jsx";
+
+const Title=styled.h1`
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 20px;
+`;
+const ArtworkContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; // vertical
+    margin: 10px auto;
+    max-width: 800px; // Limit the width for better readability and organization
+    padding: 20px;
+    border: 3px solid #b50235; //pretty border
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+`;
+
+const ArtistLink = styled.a`
+    color: #b50235;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+`;
+
+const BoldText = styled.span`
+    font-weight: bold;
+`;
 
 export default function ArtworkPage(){
     const [artwork, setArtwork]=useState([])
     const { id } = useParams(); // extracts 'id' from the URL
-    
+
     useEffect(()=>{
         async function fetchData() {
             try {
@@ -31,21 +65,24 @@ export default function ArtworkPage(){
     },[id]);
     return (
         <>
-            <h1>Artwork Page</h1>
+            <Title>{artwork.title}</Title>
+            <ArtworkContainer>
 
-            <div className="artwork-info">
-                <p>Artist:
-                    <a href={`/artist/${artwork.artist_id}`}>{artwork.artist_display}</a>
+                <p><BoldText>Artist:</BoldText>
+                    <ArtistLink href={`/artist/${artwork.artist_id}`}>{artwork.artist_display}</ArtistLink>
                 </p>
-                <p>Date: {artwork.date_display}</p>
-                <p>Dimensions:{artwork.dimensions}</p>
-                <p>Medium: {artwork.medium_display}</p>
-                <img
+                <p><BoldText>Medium:</BoldText> {artwork.medium_display}</p>
+                <p><BoldText>Dimensions:</BoldText>{artwork.dimensions}</p>
+                 <img
                     src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/300,/0/default.jpg`}
                     alt={artwork.title}
                 />
 
-            </div>
+                <SimplePopup date={artwork.date_display} />
+
+            </ArtworkContainer>
+
+
         </>
     )
     //artist name, photo, title, description?
