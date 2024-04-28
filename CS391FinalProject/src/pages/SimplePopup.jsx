@@ -1,4 +1,5 @@
-//Component from MUI library!
+//Responsible for this component: Ana
+// Component from MUI library!
 // source:
 // https://mui.com/base-ui/react-popup/
 
@@ -9,6 +10,8 @@ import PropTypes from 'prop-types';
 
 
 //Pop up button to show the artwork's date
+// component was not modified much from the MUI's example usage website; some details such as
+//decoration as well as type of information passed were some modifications I made
 export default function SimplePopup({ date }) {
     const [anchor, setAnchor] = React.useState(null);
      console.log(date) //checking it was passed correctly from the artwork page
@@ -32,7 +35,7 @@ export default function SimplePopup({ date }) {
         </div>
     );
 }
-//choosing color palette
+//choosing color palette. 50 is the themed color. Purple is a color I like :)
 const colors = {
     50: '#b50235',
     100: '#f540ac',
@@ -44,7 +47,7 @@ const colors = {
 };
 
 
-
+//styling from the MUI library, did change colors and added a margin
 const PopupBody = styled('div')(
     ({ theme }) => `
   width: max-content;
@@ -107,5 +110,5 @@ const Button = styled('button')(
 );
 
 SimplePopup.propTypes = {
-    date: PropTypes.string.isRequired, // Description prop is required and should be a string
+    date: PropTypes.string.isRequired, // Date is passed on as a string from artwork page
 };
