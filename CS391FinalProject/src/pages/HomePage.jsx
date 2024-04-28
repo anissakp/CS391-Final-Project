@@ -1,9 +1,14 @@
 // Sophie: send painting's "id" to ArtworkPage
 // API: https://api.artic.edu/api/v1/artworks
+// inspiration to use Flippy came from the S&T group Frederic Lemonnier and Stone Harris. not same code, but inspired by
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import Flippy, { FrontSide, BackSide } from 'react-flippy';
+// the home page uses the ids passed and renders them from the api. Using Flippy for a fun interactive element. All this
+//art is then passing the id to the Artist page where it will say facts about the art such as dimensions and medium!
+// everything from line 12-56 is just styling using styled components. Then all the rendering is below that.
 
 const ArtworksContainer = styled.div`
     display: flex;
@@ -14,7 +19,15 @@ const ArtworksContainer = styled.div`
     background-color: white;
 `;
 
-const ArtworkCard = styled.div`
+const FeaturedArt = styled.h2`
+    text-align: center; // needed to center h2
+`;
+
+const FlippyWrapper = styled(Flippy)`
+    border: 3px solid #b50235; // cohesive border on all pages
+`;
+
+const ArtworkCard = styled.div` // set as a fun color for when they "flip" the art over to see title/artist
     background-color: mintcream;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -43,22 +56,36 @@ const ArtistName = styled.p`
     color: #666;
 `;
 
-function Artwork({ artwork }) {
+function Artwork({ artwork }) { // Artwork component received artwork as a prop to be passed through
     const { id, title, artist_title, image_id } = artwork;
 
     return (
         <Link to={`/artwork/${id}`} style={{ textDecoration: 'none' }}>
-            <ArtworkCard>
-                <ArtworkImage src={`https://www.artic.edu/iiif/2/${image_id}/full/400,/0/default.jpg`} alt={title} />
-                <ArtworkInfo>
-                    <ArtworkTitle>{title}</ArtworkTitle>
-                    <ArtistName>Artist: {artist_title}</ArtistName>
-                </ArtworkInfo>
-            </ArtworkCard>
+            <FlippyWrapper // used Flippy to add a new fun element
+                flipOnHover={true}
+                flipOnClick={false}
+                flipDirection="horizontal"
+                style={{ width: '100%', height: '100%' }}
+            >
+                <FrontSide>
+                    <ArtworkCard>
+                        <ArtworkImage src={`https://www.artic.edu/iiif/2/${image_id}/full/400,/0/default.jpg`} alt={title} />
+                    </ArtworkCard>
+                </FrontSide>
+                <BackSide>
+                    <ArtworkCard>
+                        <ArtworkInfo>
+                            <ArtworkTitle>{title}</ArtworkTitle>
+                            <ArtistName>Artist: {artist_title}</ArtistName>
+                        </ArtworkInfo>
+                    </ArtworkCard>
+                </BackSide>
+            </FlippyWrapper>
         </Link>
     );
 }
-export default function HomePage() {
+
+export default function HomePage() { // whole part renders the art that is displayed on the home page
     const [artworks, setArtworks] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -75,21 +102,23 @@ export default function HomePage() {
         }
         fetchData();
     }, []);
+
     return (
-            <div>
-                <h2>Featured Artwork</h2>
-                {loading ? (
-                    <div>Loading...</div>
-                ) : (
-                    <ArtworksContainer>
-                        {artworks.map((artwork) => (
-                            <Artwork key={artwork.id} artwork={artwork} />
-                        ))}
-                    </ArtworksContainer>
-                )}
-            </div>
+        <div>
+            <FeaturedArt>Featured Art</FeaturedArt>
+            {loading ? (
+                <div>Loading...</div>
+            ) : (
+                <ArtworksContainer>
+                    {artworks.map((artwork) => (
+                        <Artwork key={artwork.id} artwork={artwork} />
+                    ))}
+                </ArtworksContainer>
+            )}
+        </div>
     );
 }
+
 HomePage.propTypes = {
     id: PropTypes.string.isRequired,
-};
+}; // passed as string to ArtistPage!
