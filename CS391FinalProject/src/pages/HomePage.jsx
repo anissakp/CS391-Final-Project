@@ -11,6 +11,7 @@ const ArtworksContainer = styled.div`
     gap: 20px;
     justify-content: center;
     padding: 20px;
+    background-color: white;
 `;
 
 const ArtworkCard = styled.div`
@@ -19,10 +20,6 @@ const ArtworkCard = styled.div`
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     width: 300px;
-
-    &:hover {
-        transform: translateY(-5px);
-    }
 `;
 
 const ArtworkImage = styled.img`
@@ -38,6 +35,7 @@ const ArtworkInfo = styled.div`
 const ArtworkTitle = styled.h3`
     margin: 0;
     font-size: 1.2rem;
+    color: darkslategrey;
 `;
 
 const ArtistName = styled.p`
@@ -60,7 +58,6 @@ function Artwork({ artwork }) {
         </Link>
     );
 }
-
 export default function HomePage() {
     const [artworks, setArtworks] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -76,27 +73,23 @@ export default function HomePage() {
                 console.error('Error fetching data:', error);
             }
         }
-
         fetchData();
     }, []);
-
     return (
-        <div>
-            <h2> Featured Artwork</h2>
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                <ArtworksContainer>
-                    {artworks.map((artwork) => (
-                        <Artwork key={artwork.id} artwork={artwork} />
-                    ))}
-                </ArtworksContainer>
-            )}
-        </div>
+            <div>
+                <h2>Featured Artwork</h2>
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <ArtworksContainer>
+                        {artworks.map((artwork) => (
+                            <Artwork key={artwork.id} artwork={artwork} />
+                        ))}
+                    </ArtworksContainer>
+                )}
+            </div>
     );
 }
-
 HomePage.propTypes = {
     id: PropTypes.string.isRequired,
 };
-
