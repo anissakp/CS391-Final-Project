@@ -1,7 +1,8 @@
 // Margo Miller
 
 // using Flippy for a fun way to display life span of artist
-// inspiration to use Flippy came from the group in class, but I used https://www.npmjs.com/package/react-flippy to do it myself!
+// inspiration to use Flippy came from the S&T group Frederic Lemonnier and Stone Harris,
+// but I used https://www.npmjs.com/package/react-flippy to do it myself!
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import ArtistIcon from "./ArtistIcon.jsx";
