@@ -1,10 +1,10 @@
-// Margo
+// Margo Miller
 
-// using Flippy for a fun way to display birthdate of artist
+// using Flippy for a fun way to display life span of artist
+// inspiration to use Flippy came from the group in class, but I used https://www.npmjs.com/package/react-flippy to do it myself!
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import ArtistIcon from "./ArtistIcon.jsx";
-// for flippy - using inspiration from group in class, but my own code!
 import { useRef } from 'react';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 
@@ -14,20 +14,35 @@ const StyledDate=styled.h3`
     margin: auto;
 `
 
-export default function LifeSpan({birth, death}) {
+const StyledFlippy=styled(Flippy)`
+    width: 500px;
+    margin: auto;
+`
+
+const StyledFrontSide=styled(FrontSide)`
+    background: white;
+    border-radius: 10px;
+`
+
+const StyledBackSide=styled(BackSide)`
+    background: #b50235;
+    border-radius: 10px;
+`
+
+export default function LifeSpan( {birth, death} ) {
     const ref = useRef();
     return (
-        <Flippy
+        <StyledFlippy
             flipOnHover={true} // want icon to flip on hover, not on click
             flipDirection="vertical" // vertical flip
             ref={ref}
-            style={{ width: '500px', margin: 'auto'}}
         >
-            <FrontSide style={{ backgroundColor: 'white'}} >
-                {/* icon from ArtistIcon component, for styling */}
+            <StyledFrontSide>
+                {/* icon from ArtistIcon component, for fun styling */}
                 <ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/><ArtistIcon/>
-            </FrontSide>
-            <BackSide style={{ backgroundColor: '#b50235'}}>
+            </StyledFrontSide>
+            <StyledBackSide>
+                {/* uses all possible cases of null to render correct life span */}
                 {birth && death ? (
                     <StyledDate>{birth}-{death}</StyledDate>
                 ) : birth ? (
@@ -37,11 +52,12 @@ export default function LifeSpan({birth, death}) {
                 ) : (
                     <StyledDate>No information is available on their life span.</StyledDate>
                 )}
-            </BackSide>
-        </Flippy>
+            </StyledBackSide>
+        </StyledFlippy>
     );
 }
 
+// birth and death come from ArtistInfo component, from API
 LifeSpan.propTypes = {
     birth: PropTypes.string.isRequired,
     death: PropTypes.string.isRequired,

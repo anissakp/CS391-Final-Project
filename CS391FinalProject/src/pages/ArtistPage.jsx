@@ -1,4 +1,4 @@
-// Margo
+// Margo Miller
 
 // page that renders the ArtistInfo component
 import { useParams } from 'react-router-dom';
@@ -9,7 +9,9 @@ export default function ArtistPage() {
 
     return (
         <>
-            <ArtistInfo id={id}/>
+            <ArtistInfo
+                id={id} // sends id to ArtistInfo component
+            />
         </>
     );
 }

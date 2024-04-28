@@ -1,4 +1,4 @@
-// Margo
+// Margo Miller
 
 // component to display artist information
 import { useState, useEffect } from "react";
@@ -24,7 +24,7 @@ const StyledDescription=styled.div`
         width: 90%;
     }
     padding: 0 1%;
-    visibility: ${props => props.visibility}; // conditional visibility styling for whe there isn't an artist description
+    visibility: ${props => props.visibility}; // conditional visibility styling for when there isn't an artist description
 `
 
 export default function ArtistInfo( {id} ){
@@ -35,7 +35,6 @@ export default function ArtistInfo( {id} ){
     useEffect(()=>{
         async function fetchInfo() {
             try {
-                console.log("Fetching info for artist ID:", id); // check the current id
                 const raw = await fetch(`https://api.artic.edu/api/v1/artists/${id}`);
                 const responseData = await raw.json();
                 console.log("Response from API:", responseData);
@@ -62,7 +61,10 @@ export default function ArtistInfo( {id} ){
                         <h1>{artist.title}</h1>
                         <div className="artist-info">
                             {/* Life span component uses Flippy */}
-                            <LifeSpan birth={artist.birth_date} death={artist.death_date}/>
+                            <LifeSpan
+                                birth={artist.birth_date}
+                                death={artist.death_date}
+                            />
                             {/* Conditionally render this section only if a description exists: */}
                             <StyledDescription visibility={artist.description ? "visible" : "hidden"}>
                                 {artist.description && (
@@ -79,6 +81,7 @@ export default function ArtistInfo( {id} ){
     )
 }
 
+// id comes from ArtistPage, the ArtistPage gets it from the URL
 ArtistInfo.propTypes = {
     id: PropTypes.string.isRequired,
 };
