@@ -1,10 +1,11 @@
-// Sophie Marugg: send painting's "id" to ArtworkPage
+// Sophie Murragg: HomePage.jsx
 // API: https://api.artic.edu/api/v1/artworks
+
 // Had the idea to use Flippy, which is from a S&T group Frederic Lemonnier and Stone Harris.
 // the home page uses the ids passed and renders them from the api. Using Flippy for a fun interactive element. All this
-//art is then passing the id to the Artist page where it will say facts about the art such as dimensions and medium!
+// art is then passing the id to the Artist page where it will say facts about the art such as dimensions and medium!
 // everything from line 12-56 is just styling using styled components. Then all the rendering is below that.
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';

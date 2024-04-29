@@ -1,10 +1,9 @@
 // Ana Ramirez: ArtworkPage.jsx
+// API: https://api.artic.edu/api/v1/artworks/{id}
+
 // This is the artwork page where the user gets to see the artwork they clicked on, information
 // about the art, and should also redirect the user to the artist page of that artwork whenever
 // they click on the artist's name
-
-// API: https://api.artic.edu/api/v1/artworks/{id}
-
 
 import {useEffect,useState} from "react";
 import PropTypes from "prop-types";

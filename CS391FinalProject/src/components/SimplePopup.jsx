@@ -1,7 +1,7 @@
-//Responsible for this component: Ana
+// Ana Ramirez: SimplePopup.jsx
+
 // Component from MUI library!
-// source:
-// https://mui.com/base-ui/react-popup/
+// source: https://mui.com/base-ui/react-popup/
 
 import * as React from 'react';
 import { Unstable_Popup as BasePopup } from '@mui/base/Unstable_Popup';
@@ -9,9 +9,9 @@ import { styled } from '@mui/system';
 import PropTypes from 'prop-types';
 
 
-//Pop up button to show the artwork's date
+// Pop up button to show the artwork's date
 // component was not modified much from the MUI's example usage website; some details such as
-//decoration as well as type of information passed were some modifications I made
+// decoration as well as type of information passed were some modifications I made
 export default function SimplePopup({ date }) {
     const [anchor, setAnchor] = React.useState(null);
      console.log(date) //checking it was passed correctly from the artwork page

@@ -1,5 +1,8 @@
 // Margo Miller: ArtistPage.jsx
-// page that renders information about the artist
+// API: https://api.artic.edu/api/v1/artists/${id}
+
+// the artist page renders information about a specific artist,
+// it uses LifeSpan.jsx component to display an artist's life span
 import { useParams } from 'react-router-dom';
 import LifeSpan from "../components/LifeSpan.jsx";
 import {useEffect, useState} from "react";
@@ -33,7 +36,7 @@ export default function ArtistPage() {
     const [loading,setLoading]=useState(true) // stores loading info
 
     useEffect(()=>{
-        async function fetchInfo() {
+        async function fetchInfo() { // for fetching an artist from the API
             try {
                 const raw = await fetch(`https://api.artic.edu/api/v1/artists/${id}`);
                 const responseData = await raw.json();

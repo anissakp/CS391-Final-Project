@@ -1,4 +1,4 @@
-// Margo Miller
+// Margo Miller: LifeSpan.jsx
 // using Flippy for a fun way to display life span of artist
 
 // inspiration to use Flippy came from the S&T group Frederic Lemonnier and Stone Harris,
