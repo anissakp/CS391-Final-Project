@@ -9,6 +9,7 @@ Navigate to the project directory and install necessary packages:
 ```
 cd CS391-Final-Project/CS391FinalProject
 npm install
+npm install react-flippy --legacy-peer-deps
 ```
 Run the web application:
 ```
