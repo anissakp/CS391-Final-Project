@@ -30,7 +30,7 @@ const StyledBackSide=styled(BackSide)` // has the artist life span info
     border-radius: 10px;
 `
 
-export default function LifeSpan( {birth, death} ) {
+export default function LifeSpan( {name, birth, death} ) {
 
     const ref = useRef();
 
@@ -53,7 +53,7 @@ export default function LifeSpan( {birth, death} ) {
                 ) : death ? (
                     <StyledDate>??-{death}</StyledDate>
                 ) : (
-                    <StyledDate>No information is available on their life span.</StyledDate>
+                    <StyledDate>No information is available on {name}'s life span.</StyledDate>
                 )}
             </StyledBackSide>
         </StyledFlippy>
@@ -62,6 +62,7 @@ export default function LifeSpan( {birth, death} ) {
 
 // birth and death come from artist page, originally from API
 LifeSpan.propTypes = {
+    name: PropTypes.string.isRequired,
     birth: PropTypes.string.isRequired,
     death: PropTypes.string.isRequired,
 };

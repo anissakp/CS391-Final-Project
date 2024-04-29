@@ -64,6 +64,7 @@ export default function ArtistPage() {
                         <h1>{artist.title}</h1>
                         {/* Life span component uses Flippy */}
                         <LifeSpan
+                            name={artist.title}
                             birth={artist.birth_date}
                             death={artist.death_date}
                         />
