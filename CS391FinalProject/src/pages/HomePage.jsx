@@ -1,14 +1,15 @@
 // Sophie: send painting's "id" to ArtworkPage
 // API: https://api.artic.edu/api/v1/artworks
-// inspiration to use Flippy came from the S&T group Frederic Lemonnier and Stone Harris. not same code, but inspired by
+// Had the idea to use Flippy, which is from a S&T group Frederic Lemonnier and Stone Harris.
+
+// the home page uses the ids passed and renders them from the api. Using Flippy for a fun interactive element. All this
+//art is then passing the id to the Artist page where it will say facts about the art such as dimensions and medium!
+// everything from line 12-56 is just styling using styled components. Then all the rendering is below that.
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
-// the home page uses the ids passed and renders them from the api. Using Flippy for a fun interactive element. All this
-//art is then passing the id to the Artist page where it will say facts about the art such as dimensions and medium!
-// everything from line 12-56 is just styling using styled components. Then all the rendering is below that.
 
 const ArtworksContainer = styled.div`
     display: flex;
@@ -25,24 +26,19 @@ const FeaturedArt = styled.h2`
 
 const FlippyWrapper = styled(Flippy)`
     border: 3px solid #b50235; // cohesive border on all pages
+    background-color: whitesmoke;
 `;
 
-const ArtworkCard = styled.div` // set as a fun color for when they "flip" the art over to see title/artist
-    background-color: mintcream;
+const ArtworkCard = styled.div` // set as a fun color (mintcream) for when it "flips" the art over to see title/artist
+    background-color: ghostwhite;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
     width: 300px;
 `;
-
 const ArtworkImage = styled.img`
     width: 100%;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
 `;
-
 const ArtworkInfo = styled.div`
-    padding: 16px;
+    padding: 20px;
 `;
 
 const ArtworkTitle = styled.h3`
@@ -53,7 +49,7 @@ const ArtworkTitle = styled.h3`
 
 const ArtistName = styled.p`
     margin: 8px 0 0;
-    color: #666;
+    color: darkslategrey;
 `;
 
 function Artwork({ artwork }) { // Artwork component received artwork as a prop to be passed through
@@ -64,7 +60,7 @@ function Artwork({ artwork }) { // Artwork component received artwork as a prop 
             <FlippyWrapper // used Flippy to add a new fun element
                 flipOnHover={true}
                 flipOnClick={false}
-                flipDirection="horizontal"
+                flipDirection="vertical"
                 style={{ width: '100%', height: '100%' }}
             >
                 <FrontSide>
@@ -85,7 +81,7 @@ function Artwork({ artwork }) { // Artwork component received artwork as a prop 
     );
 }
 
-export default function HomePage() { // whole part renders the art that is displayed on the home page
+export default function HomePage() { // lines 84-101 fetches the art that is displayed on the home page. the api rotates art too
     const [artworks, setArtworks] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -97,7 +93,7 @@ export default function HomePage() { // whole part renders the art that is displ
                 setArtworks(data);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Issue with fetching data:', error);
             }
         }
         fetchData();
@@ -105,9 +101,9 @@ export default function HomePage() { // whole part renders the art that is displ
 
     return (
         <div>
-            <FeaturedArt>Featured Art</FeaturedArt>
+            <FeaturedArt>The Art Institute of Chicago's Featured Art</FeaturedArt>
             {loading ? (
-                <div>Loading...</div>
+                <div>Art is loading...</div>
             ) : (
                 <ArtworksContainer>
                     {artworks.map((artwork) => (
