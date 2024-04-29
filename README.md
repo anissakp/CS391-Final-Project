@@ -29,7 +29,7 @@ Anissa Patel
 Margo Miller
 
 - ```ArtistPage.jsx```: page that renders information about a specific artist
-- ```LifeSpan.jsx```: component that uses React-Flippy to show artist's life span for ArtistPage.jsx
+- ```LifeSpan.jsx```: component that uses React-Flippy to show artist's life span for ```ArtistPage.jsx```
 - ```ArtistIcon.jsx```: image component for ```LifeSpan.jsx```
 
 Sophie Muragg
