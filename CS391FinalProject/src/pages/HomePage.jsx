@@ -58,7 +58,7 @@ function Artwork({ artwork }) { // Artwork component received artwork as a prop 
         <Link to={`/artwork/${id}`} style={{ textDecoration: 'none' }}>
             <FlippyWrapper // used Flippy to add a new fun element line 67 -70 is front of card and 71-78 is what i put on the back of the card for when you hover over
                 flipOnHover={true}
-                flipOnClick={false}
+                flipOnClick={true}
                 flipDirection="vertical"
                 style={{ width: '100%', height: '100%' }}
             >
@@ -79,6 +79,9 @@ function Artwork({ artwork }) { // Artwork component received artwork as a prop 
         </Link>
     );
 }
+Artwork.propTypes = {
+    id: PropTypes.string.isRequired,
+}; // passed as string!
 
 export default function HomePage() { // lines 84-101 fetches the art that is displayed on the home page. the api rotates art too
     const [artworks, setArtworks] = useState([]);
