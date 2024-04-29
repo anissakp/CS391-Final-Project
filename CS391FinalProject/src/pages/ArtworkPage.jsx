@@ -10,7 +10,7 @@ import {useEffect,useState} from "react";
 import PropTypes from "prop-types";
 import { useParams } from 'react-router-dom';
 import styled from "styled-components";
-import SimplePopup from "./SimplePopup.jsx"; //new component from MUI library. This is a popup where I will display the artwork's date
+import SimplePopup from "../components/SimplePopup.jsx"; //new component from MUI library. This is a popup where I will display the artwork's date
 
 const Title=styled.h1`
     text-align: center;
