@@ -101,7 +101,7 @@ export default function HomePage() { // lines 84-101 fetches the art that is dis
 
     return (
         <div>
-            <FeaturedArt>The Art Institute of Chicago's Featured Art</FeaturedArt>
+            <FeaturedArt>Featured Art</FeaturedArt>
             {loading ? (
                 <div>Art is loading...</div>
             ) : (

@@ -19,6 +19,8 @@ const HeaderWrapper = styled.header`
 
 const StyledH1 = styled.h1`
     font-size: 1.5em;
+    text-align: left; 
+    margin-right: auto;
 `;
 
 const Nav = styled.nav`
