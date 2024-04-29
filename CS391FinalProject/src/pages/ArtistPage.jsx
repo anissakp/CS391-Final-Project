@@ -1,4 +1,4 @@
-// Margo Miller
+// Margo Miller: ArtistPage.jsx
 
 // page that renders the ArtistInfo component
 import { useParams } from 'react-router-dom';

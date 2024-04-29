@@ -1,4 +1,4 @@
-// Anissa: Header.jsx
+// Anissa Patel: Header.jsx
 import {useState, useEffect} from "react";
 import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';

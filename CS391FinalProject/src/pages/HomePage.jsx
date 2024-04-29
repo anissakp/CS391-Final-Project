@@ -1,4 +1,4 @@
-// Sophie: send painting's "id" to ArtworkPage
+// Sophie Murrag: send painting's "id" to ArtworkPage
 // API: https://api.artic.edu/api/v1/artworks
 // Had the idea to use Flippy, which is from a S&T group Frederic Lemonnier and Stone Harris.
 

@@ -1,4 +1,4 @@
-// Responsible for this component: Ana
+// Ana Ramirez: ArtworkPage.jsx
 // This is the artwork page where the user gets to see the artwork they clicked on, information
 // about the art, and should also redirect the user to the artist page of that artwork whenever
 // they click on the artist's name
@@ -48,7 +48,7 @@ const BoldText = styled.span`
 //it then calls the API with said artwork id, and logs what info we get
 //we then populate our artwork container with the info that we want, making it
 //look organized and professional
-// we use useState and useEffect hooks!
+//we use useState and useEffect hooks!
 export default function ArtworkPage(){
     const [artwork, setArtwork]=useState([])
     const { id } = useParams(); // extracts 'id' from what we input
@@ -77,7 +77,7 @@ export default function ArtworkPage(){
         <>
             <Title>{artwork.title}</Title>
             <ArtworkContainer>
-                <p><BoldText>Artist:</BoldText>
+                <p><BoldText>Artist: </BoldText>
                     <ArtistLink href={`/artist/${artwork.artist_id}`}>{artwork.artist_display}</ArtistLink>
                 </p>
                 <p><BoldText>Medium:</BoldText> {artwork.medium_display}</p>
