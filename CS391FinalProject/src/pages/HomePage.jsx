@@ -1,7 +1,6 @@
 // Sophie Murrag: send painting's "id" to ArtworkPage
 // API: https://api.artic.edu/api/v1/artworks
 // Had the idea to use Flippy, which is from a S&T group Frederic Lemonnier and Stone Harris.
-
 // the home page uses the ids passed and renders them from the api. Using Flippy for a fun interactive element. All this
 //art is then passing the id to the Artist page where it will say facts about the art such as dimensions and medium!
 // everything from line 12-56 is just styling using styled components. Then all the rendering is below that.

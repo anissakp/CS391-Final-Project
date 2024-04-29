@@ -32,6 +32,7 @@ Margo Miller
 - ```LifeSpan.jsx```: component that uses React-Flippy to show artist's life span for ```ArtistPage.jsx```
 - ```ArtistIcon.jsx```: image component for ```LifeSpan.jsx```
 
-Sophie Muragg
+Sophie Marugg
 
-- ```HomePage.jsx```: 
+- ```HomePage.jsx```: page that renders images of the art work, then uses flippy to show the artist title and artist name. 
+Then when you click on a piece of art it directs you to the ArtWork page where you'll find details about each piece.
