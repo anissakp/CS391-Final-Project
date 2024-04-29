@@ -1,6 +1,6 @@
 // Margo Miller
-
 // using Flippy for a fun way to display life span of artist
+
 // inspiration to use Flippy came from the S&T group Frederic Lemonnier and Stone Harris,
 // but I used https://www.npmjs.com/package/react-flippy to do it myself!
 import styled from "styled-components";
@@ -20,18 +20,20 @@ const StyledFlippy=styled(Flippy)`
     margin: auto;
 `
 
-const StyledFrontSide=styled(FrontSide)`
+const StyledFrontSide=styled(FrontSide)` // has the paint icon
     background: white;
     border-radius: 10px;
 `
 
-const StyledBackSide=styled(BackSide)`
+const StyledBackSide=styled(BackSide)` // has the artist life span info
     background: #b50235;
     border-radius: 10px;
 `
 
 export default function LifeSpan( {birth, death} ) {
+
     const ref = useRef();
+
     return (
         <StyledFlippy
             flipOnHover={true} // want icon to flip on hover, not on click
@@ -58,7 +60,7 @@ export default function LifeSpan( {birth, death} ) {
     );
 }
 
-// birth and death come from ArtistInfo component, from API
+// birth and death come from artist page, originally from API
 LifeSpan.propTypes = {
     birth: PropTypes.string.isRequired,
     death: PropTypes.string.isRequired,
