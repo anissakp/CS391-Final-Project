@@ -23,8 +23,8 @@ Ana Ramirez
 
 Anissa Patel
 
-- ```App.jsx```: 
-- ```Header.jsx```:
+- ```App.jsx```: the main application component that uses a router to manage navigation and display between different pages
+- ```Header.jsx```: the site's header that provides a link to the home page and includes a dropdown menu filled with artist information, enabling users to navigate to individual artist pages
 
 Margo Miller
 
