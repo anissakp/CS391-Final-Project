@@ -4,9 +4,11 @@ import {NavLink} from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.png';
 
+// imports FontAwesome icons to use in components
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
+// styles for main header container
 const HeaderWrapper = styled.header`
     background-color: #333;
     color: white;
@@ -17,12 +19,14 @@ const HeaderWrapper = styled.header`
     min-height: 80px; 
 `;
 
+// styles for the site title within the header
 const StyledH1 = styled.h1`
     font-size: 1.5em;
     text-align: left; 
     margin-right: auto;
 `;
 
+// styling for navigation menu
 const Nav = styled.nav`
     ul {
         display: flex;
@@ -37,6 +41,7 @@ const Nav = styled.nav`
     }
 `;
 
+// styles for navigation links
 const StyledLink = styled(NavLink)`
     color: white;
     text-decoration: none;
@@ -46,12 +51,14 @@ const StyledLink = styled(NavLink)`
     }
 `;
 
+// styles for logo
 const LogoImage = styled.img`
     height: 50px; 
     width: auto; 
     margin-right: 20px;  
 `;
 
+// styles for dropdown menu content
 const DropdownContent = styled.div`
     display: none;
     position: absolute;
@@ -67,33 +74,38 @@ const DropdownContent = styled.div`
         text-decoration: none;
         display: block;
 
+        // changes background color on hover 
         &:hover {
             background-color: #f1f1f1;
         }
     }
 `;
 
+// styles specific to list items that contain dropdown content
 const DropdownLi = styled.li`
     &:hover ${DropdownContent} {
         display: block;
     }
 `;
 
+// combines styled link with flexbox for alignment of text and dropdown menu icon
 const StyledLinkWithIcon = styled(StyledLink)`
   display: flex;
   align-items: center;
 `;
 
 export default function Header(props){
+    // state to hold artist data
     const [artists, setArtists] = useState([]);
 
-    // Fetch artist data from API
+    // fetch artist data from chicago art museum API
     useEffect(() => {
         async function fetchArtists() {
             try {
                 const response = await fetch('https://api.artic.edu/api/v1/artists');
                 const data = await response.json();
                 if (data && data.data) {
+                    // update state with artist data
                     setArtists(data.data); 
                 }
             } catch (error) {
@@ -103,6 +115,7 @@ export default function Header(props){
         fetchArtists();
     }, []);
 
+    // render the header with logo, title, and navigation
     return (
         <HeaderWrapper>
             <LogoImage src={logo} className='App-logo' alt='logo' />
@@ -114,13 +127,14 @@ export default function Header(props){
                             Home
                         </StyledLinkWithIcon>
                     </li>
-
-                    {/* Create dropdown menu with each artist as an option */}
-                    {/* When an artist is selected, the user is navigated to that Artist's page */}
                     <DropdownLi>
                         <StyledLinkWithIcon to="#" className="App-link">
+                            {/* arrow icon next to drop down menu */}
                             Artists <FontAwesomeIcon icon={faCaretDown} />
                         </StyledLinkWithIcon>
+
+                        {/* creates dropdown menu with each artist as an option */}
+                        {/* when an artist is selected, the user is navigated to that artist's page */}     
                         <DropdownContent>
                             {artists.map(artist => (
                                 <NavLink key={artist.id} to={`/artist/${artist.id}`}>
