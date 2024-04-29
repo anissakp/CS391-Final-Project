@@ -57,7 +57,7 @@ function Artwork({ artwork }) { // Artwork component received artwork as a prop 
 
     return (
         <Link to={`/artwork/${id}`} style={{ textDecoration: 'none' }}>
-            <FlippyWrapper // used Flippy to add a new fun element
+            <FlippyWrapper // used Flippy to add a new fun element line 67 -70 is front of card and 71-78 is what i put on the back of the card for when you hover over
                 flipOnHover={true}
                 flipOnClick={false}
                 flipDirection="vertical"
@@ -114,7 +114,6 @@ export default function HomePage() { // lines 84-101 fetches the art that is dis
         </div>
     );
 }
-
 HomePage.propTypes = {
     id: PropTypes.string.isRequired,
 }; // passed as string to ArtistPage!
