@@ -81,11 +81,8 @@ function Artwork({ artwork }) { // Artwork component received artwork as a prop 
     );
 }
 Artwork.propTypes = {
-    id: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    artist_title: PropTypes.string.isRequired,
-    image_id: PropTypes.string.isRequired,
-}; // passed as string!
+    artwork: PropTypes.string.isRequired,
+};
 
 export default function HomePage() { // lines 84-101 fetches the art that is displayed on the home page. the api rotates art too
     const [artworks, setArtworks] = useState([]);
