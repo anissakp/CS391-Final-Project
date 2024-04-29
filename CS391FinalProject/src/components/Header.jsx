@@ -108,6 +108,7 @@ export default function Header(props){
                     // update state with artist data
                     setArtists(data.data); 
                 }
+            // error handling
             } catch (error) {
                 console.error('Failed to fetch artists:', error);
             }
